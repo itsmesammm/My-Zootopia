@@ -9,11 +9,13 @@ def load_data(file_path):
 def generate_info_string(animals_data):
     output = ""
     for animal in animals_data:
-        output += '<li class="cards__item">'    # Begin the HTML list item
-        output += f"Name: {animal['name']}<br/>\n"  # Add the animal information as HTML
-        output += f"Diet: {animal['characteristics'].get('diet', 'N/A')}<br/>\n"
-        output += f"Location: {', '.join(animal['locations'])}<br/>\n"
-        output += f"Type: {animal['characteristics'].get('type', 'N/A')}<br/>\n"
+        output += '<li class="cards__item">\n'
+        output += f'  <div class="card__title">{animal["name"]}</div>\n'
+        output += '  <p class="card__text">\n'
+        output += f'      <strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}<br/>\n'
+        output += f'      <strong>Location:</strong> {", ".join(animal["locations"])}<br/>\n'
+        output += f'      <strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}<br/>\n'
+        output += '  </p>\n'
         output += '</li>\n'
     return output
 
