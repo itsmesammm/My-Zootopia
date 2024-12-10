@@ -6,17 +6,29 @@ def load_data(file_path):
         return json.load(handle)
 
 
-def generate_info_string(animals_data):
+def serialize_animal(animal):
+    """
+    Serialize a single animal object into an HTML string.
+    """
     output = ""
-    for animal in animals_data:
-        output += '<li class="cards__item">\n'
-        output += f'  <div class="card__title">{animal["name"]}</div>\n'
-        output += '  <p class="card__text">\n'
-        output += f'      <strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}<br/>\n'
-        output += f'      <strong>Location:</strong> {", ".join(animal["locations"])}<br/>\n'
-        output += f'      <strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}<br/>\n'
-        output += '  </p>\n'
-        output += '</li>\n'
+    output += '<li class="cards__item">\n'
+    output += f'  <div class="card__title">{animal["name"]}</div>\n'
+    output += '  <p class="card__text">\n'
+    output += f'      <strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}<br/>\n'
+    output += f'      <strong>Location:</strong> {", ".join(animal["locations"])}<br/>\n'
+    output += f'      <strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}<br/>\n'
+    output += '  </p>\n'
+    output += '</li>\n'
+    return output
+
+
+def generate_info_string(animals_data):
+    """
+    Generate an HTML string for a list of animals by serializing each one.
+    """
+    output = ""
+    for animal_obj in animals_data:
+        output += serialize_animal(animal_obj)
     return output
 
 
