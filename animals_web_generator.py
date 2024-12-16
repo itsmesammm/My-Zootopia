@@ -18,6 +18,7 @@ def serialize_animal(animal):
     output += f'      <li class="details-item"><strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}</li>\n'
     output += f'      <li class="details-item"><strong>Location:</strong> {", ".join(animal["locations"])}</li>\n'
     output += f'      <li class="details-item"><strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}</li>\n'
+    output += f'      <li class="details-item"><strong>Skin Type:</strong> {animal["characteristics"].get("skin_type", "Unknown")}</li>\n'
     output += '    </ul>\n'
     output += '  </p>\n'
     output += '</li>\n'
