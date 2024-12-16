@@ -8,15 +8,17 @@ def load_data(file_path):
 
 def serialize_animal(animal):
     """
-    Serialize a single animal object into an HTML string.
+    Serialize a single animal object into an HTML string with improved structure.
     """
     output = ""
     output += '<li class="cards__item">\n'
     output += f'  <div class="card__title">{animal["name"]}</div>\n'
     output += '  <p class="card__text">\n'
-    output += f'      <strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}<br/>\n'
-    output += f'      <strong>Location:</strong> {", ".join(animal["locations"])}<br/>\n'
-    output += f'      <strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}<br/>\n'
+    output += '    <ul class="details-list">\n'
+    output += f'      <li class="details-item"><strong>Diet:</strong> {animal["characteristics"].get("diet", "N/A")}</li>\n'
+    output += f'      <li class="details-item"><strong>Location:</strong> {", ".join(animal["locations"])}</li>\n'
+    output += f'      <li class="details-item"><strong>Type:</strong> {animal["characteristics"].get("type", "N/A")}</li>\n'
+    output += '    </ul>\n'
     output += '  </p>\n'
     output += '</li>\n'
     return output
